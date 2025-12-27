@@ -1,0 +1,66 @@
+[
+  {
+    "text": "Startup India Initiative: The Government of India launched Startup India in 2016 to build a strong ecosystem for nurturing innovation and startups in the country. Key benefits include self-certification for labor and environment laws, tax exemption for 3 consecutive years under Section 80-IAC, and fast-track patent examination. Startups can get up to 80% rebate on patent filing fees. The initiative also includes Startup India Seed Fund Scheme providing up to Rs. 50 lakhs for proof of concept, prototype development, and product trials.",
+    "category": "policy",
+    "timestamp": "2024-12-01",
+    "geography": "India",
+    "source": "Startup India Portal",
+    "title": "Startup India Initiative Overview"
+  },
+  {
+    "text": "Fund of Funds for Startups (FFS): SIDBI manages the Fund of Funds with a corpus of Rs. 10,000 crores to provide funding support to startups through Alternative Investment Funds (AIFs). The scheme does not directly invest in startups but provides capital to SEBI-registered AIFs who in turn invest in startups. This creates a multiplier effect, enabling more capital flow into the startup ecosystem. Over 90 AIFs have been registered under this scheme.",
+    "category": "policy",
+    "timestamp": "2024-11-15",
+    "geography": "India",
+    "source": "SIDBI",
+    "title": "Fund of Funds for Startups"
+  },
+  {
+    "text": "Credit Guarantee Scheme for Startups (CGSS): This scheme provides credit guarantees to banks and financial institutions for loans to DPIIT-recognized startups. The maximum guarantee cover is Rs. 10 crores with a guarantee period up to the tenure of the loan. This helps startups access debt funding without requiring collateral, making it easier for early-stage companies to secure working capital.",
+    "category": "policy",
+    "timestamp": "2024-10-20",
+    "geography": "India",
+    "source": "Ministry of Commerce",
+    "title": "Credit Guarantee Scheme for Startups"
+  },
+  {
+    "text": "Digital India Programme: A flagship programme to transform India into a digitally empowered society and knowledge economy. Key initiatives include BharatNet for rural broadband, Digital Locker for document storage, and various e-governance services. The programme creates opportunities for startups in areas like digital payments, e-governance solutions, cybersecurity, and digital health.",
+    "category": "policy",
+    "timestamp": "2024-09-10",
+    "geography": "India",
+    "source": "Digital India Portal",
+    "title": "Digital India Programme"
+  },
+  {
+    "text": "RBI Regulatory Sandbox for Fintech: The Reserve Bank of India has established a regulatory sandbox framework to enable live testing of innovative fintech products and services. Startups can test their solutions in a controlled environment before full-scale deployment. Focus areas include retail payments, cross-border payments, MSME lending, and digital KYC. Maximum validity is 6 months, extendable by another 6 months.",
+    "category": "policy",
+    "timestamp": "2024-12-10",
+    "geography": "India",
+    "source": "Reserve Bank of India",
+    "title": "RBI Fintech Regulatory Sandbox"
+  },
+  {
+    "text": "SEBI Framework for Fintech: SEBI has introduced various regulations for fintech companies operating in capital markets. This includes guidelines for robo-advisory services, algorithm trading, and crowdfunding platforms. Startups offering investment advisory services need to register as Investment Advisers. Those offering portfolio management require a minimum net worth of Rs. 50 lakhs.",
+    "category": "policy",
+    "timestamp": "2024-11-25",
+    "geography": "India",
+    "source": "SEBI",
+    "title": "SEBI Fintech Regulations"
+  },
+  {
+    "text": "US Small Business Administration Programs: The SBA offers several programs for startups including 7(a) loans (up to $5 million), 504 loans for fixed assets, and microloans up to $50,000. The Small Business Investment Company (SBIC) program licenses private investment funds to provide equity and debt financing to small businesses. The SBIR/STTR programs provide over $3 billion annually in grants for R&D.",
+    "category": "policy",
+    "timestamp": "2024-11-30",
+    "geography": "USA",
+    "source": "SBA.gov",
+    "title": "US Small Business Programs"
+  },
+  {
+    "text": "UK Enterprise Investment Scheme (EIS): EIS offers tax reliefs to individual investors who buy shares in high-risk companies. Investors can get up to 30% income tax relief on investments up to £1 million. Companies can raise up to £5 million per year through EIS. The Seed Enterprise Investment Scheme (SEIS) offers 50% tax relief for investments in very early-stage companies, up to £100,000 per tax year.",
+    "category": "policy",
+    "timestamp": "2024-10-15",
+    "geography": "UK",
+    "source": "UK Government",
+    "title": "UK Enterprise Investment Scheme"
+  }
+]

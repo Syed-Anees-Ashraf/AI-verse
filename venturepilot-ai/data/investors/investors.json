@@ -1,0 +1,90 @@
+[
+  {
+    "text": "Sequoia Capital India is one of the most active venture capital firms in India, having invested in over 200 companies. Notable portfolio companies include Byju's, Zomato, OYO, Pine Labs, and CRED. They typically invest from Seed to Growth stages with check sizes ranging from $500K to $100M. Focus areas include consumer internet, fintech, enterprise software, and healthcare. The firm has a strong track record in fintech with investments in Razorpay, BharatPe, and Groww.",
+    "category": "investor",
+    "timestamp": "2024-12-15",
+    "geography": "India",
+    "source": "Sequoia Capital",
+    "title": "Sequoia Capital India Profile"
+  },
+  {
+    "text": "Accel Partners has been investing in India since 2008 and has backed several unicorns including Flipkart, Swiggy, and Freshworks. They focus on early-stage investments (Seed and Series A) with check sizes typically between $500K and $10M. Key sectors include SaaS, fintech, consumer, and healthcare. The firm is known for being founder-friendly and providing operational support beyond capital.",
+    "category": "investor",
+    "timestamp": "2024-12-10",
+    "geography": "India",
+    "source": "Accel",
+    "title": "Accel Partners India Profile"
+  },
+  {
+    "text": "Tiger Global Management is a New York-based hedge fund and private equity firm with significant investments in Indian startups. Known for fast decision-making and large check sizes ($10M-$100M+), Tiger Global has backed Flipkart, Ola, Razorpay, and many others. They typically invest in Series A onwards and have been particularly active in fintech, e-commerce, and edtech sectors.",
+    "category": "investor",
+    "timestamp": "2024-11-28",
+    "geography": "India",
+    "source": "Tiger Global",
+    "title": "Tiger Global India Investments"
+  },
+  {
+    "text": "Blume Ventures is an early-stage VC firm focused on pre-seed and seed investments in India. With an AUM of over $400 million, they have invested in 150+ companies including Slice, Unacademy, Dunzo, and GreyOrange. Check sizes range from $200K to $3M. They have sector expertise in fintech, B2B SaaS, consumer, and deep tech. Known for hands-on approach with portfolio companies.",
+    "category": "investor",
+    "timestamp": "2024-12-05",
+    "geography": "India",
+    "source": "Blume Ventures",
+    "title": "Blume Ventures Profile"
+  },
+  {
+    "text": "Matrix Partners India focuses on early to growth-stage investments with a portfolio including Razorpay, Ola, Practo, and OfBusiness. Typical investment range is $1M-$20M. The firm has deep expertise in fintech, healthcare, logistics, and B2B sectors. They actively help with hiring, strategy, and international expansion for portfolio companies.",
+    "category": "investor",
+    "timestamp": "2024-11-20",
+    "geography": "India",
+    "source": "Matrix Partners",
+    "title": "Matrix Partners India Profile"
+  },
+  {
+    "text": "Peak XV Partners (formerly Sequoia India/SEA) manages over $9 billion across various funds. They invest across stages from Seed to pre-IPO in India and Southeast Asia. Key portfolio companies include Byju's, Zomato, Gojek, and Tokopedia. Focus sectors are consumer internet, fintech, enterprise software, and healthcare. They offer extensive resources for scaling including talent networks and operating partners.",
+    "category": "investor",
+    "timestamp": "2024-12-12",
+    "geography": "India",
+    "source": "Peak XV Partners",
+    "title": "Peak XV Partners Profile"
+  },
+  {
+    "text": "Andreessen Horowitz (a16z) is a leading Silicon Valley VC with a crypto and AI focus. Notable investments include OpenAI, Databricks, Coinbase, and Airbnb. They have dedicated funds for crypto ($4.5B), gaming, and bio. Typical investment sizes range from $1M seed to $100M+ growth rounds. Known for their platform services including recruiting, marketing, and technical support for portfolio companies.",
+    "category": "investor",
+    "timestamp": "2024-12-01",
+    "geography": "USA",
+    "source": "a16z",
+    "title": "Andreessen Horowitz Profile"
+  },
+  {
+    "text": "Bessemer Venture Partners is a global VC with over $20 billion AUM and a strong track record in SaaS (Twilio, Shopify, Procore). They invest from Seed to growth with a focus on cloud computing, consumer, healthcare, and fintech. In India, they have backed Swiggy, Urban Company, and Byju's. Known for their 'anti-portfolio' transparency and long-term founder support.",
+    "category": "investor",
+    "timestamp": "2024-11-15",
+    "geography": "USA",
+    "source": "Bessemer",
+    "title": "Bessemer Venture Partners Profile"
+  },
+  {
+    "text": "Lightspeed Venture Partners manages over $18 billion globally with investments in Snap, Affirm, and Mulesoft. In India, they've backed OYO, Udaan, and ShareChat. They focus on enterprise, consumer, fintech, and health. Typical check sizes range from $10M to $100M+ across stages. The firm has a dedicated India team and offers global network access to portfolio companies.",
+    "category": "investor",
+    "timestamp": "2024-12-08",
+    "geography": "India",
+    "source": "Lightspeed",
+    "title": "Lightspeed India Profile"
+  },
+  {
+    "text": "SoftBank Vision Fund is one of the largest technology investors globally with $100 billion in the first fund. Notable Indian investments include Flipkart, Ola, Paytm, and Oyo. They typically make large investments ($100M+) in later-stage companies. Focus areas include AI, transportation, fintech, and consumer internet. Known for aggressive growth strategies and large capital deployment.",
+    "category": "investor",
+    "timestamp": "2024-11-10",
+    "geography": "India",
+    "source": "SoftBank",
+    "title": "SoftBank Vision Fund India"
+  },
+  {
+    "text": "Indian Angel Network (IAN) is one of the largest angel networks in Asia with over 500 members. They invest between Rs. 50 lakhs to Rs. 7 crores in pre-seed and seed stage startups. Notable investments include Druva, Sapience Analytics, and Box8. They provide mentorship beyond capital through their member network of successful entrepreneurs and industry experts.",
+    "category": "investor",
+    "timestamp": "2024-12-03",
+    "geography": "India",
+    "source": "IAN",
+    "title": "Indian Angel Network Profile"
+  }
+]

@@ -1,0 +1,90 @@
+[
+  {
+    "text": "Razorpay raises $375 million in Series F, valued at $7.5 billion. The Bangalore-based fintech company plans to use the funds to expand its product suite, enter new international markets, and strengthen its banking and lending products. The round was led by Lone Pine Capital, Alkeon Capital, and TCV, with participation from existing investors.",
+    "category": "news",
+    "timestamp": "2024-12-20",
+    "geography": "India",
+    "source": "TechCrunch",
+    "title": "Razorpay $375M Series F"
+  },
+  {
+    "text": "RBI releases new guidelines for digital lending, requiring all loan disbursals and repayments to be executed through bank accounts without any pass-through by fintech companies. The guidelines also mandate transparent disclosure of all fees and charges, clear communication about the lending entity, and restrictions on aggressive recovery practices.",
+    "category": "news",
+    "timestamp": "2024-12-15",
+    "geography": "India",
+    "source": "Economic Times",
+    "title": "RBI Digital Lending Guidelines"
+  },
+  {
+    "text": "Indian startup ecosystem sees record funding of $18 billion in 2024 despite global slowdown. Fintech leads with $5 billion followed by e-commerce ($3.2 billion) and healthtech ($2.1 billion). The number of unicorns reaches 108 with 15 new additions this year. Late-stage funding remained strong while seed and Series A saw moderation.",
+    "category": "news",
+    "timestamp": "2024-12-25",
+    "geography": "India",
+    "source": "Inc42",
+    "title": "Indian Startup Funding 2024"
+  },
+  {
+    "text": "Zerodha becomes India's most profitable brokerage, reports Rs. 2,907 crore profit in FY24. The bootstrapped fintech company now has over 10 million active users. Founder Nithin Kamath attributes success to technology-first approach and low-cost structure. The company is now exploring expansion into mutual funds and insurance distribution.",
+    "category": "news",
+    "timestamp": "2024-12-18",
+    "geography": "India",
+    "source": "Mint",
+    "title": "Zerodha FY24 Results"
+  },
+  {
+    "text": "Government launches Digital India 2.0 with focus on AI and emerging technologies. New initiatives include AI mission with Rs. 10,000 crore allocation, National Deep Tech Startup Policy, and semiconductor manufacturing incentives. The policy aims to position India as a global hub for digital innovation and create 50 million tech jobs by 2030.",
+    "category": "news",
+    "timestamp": "2024-12-10",
+    "geography": "India",
+    "source": "PIB",
+    "title": "Digital India 2.0 Launch"
+  },
+  {
+    "text": "PhonePe crosses 500 million registered users, processes 50% of India's UPI transactions. The fintech giant is preparing for an IPO and has expanded into insurance, mutual funds, and stock broking. The company reports annualized TPV of $1.5 trillion and is investing heavily in merchant acquisition and financial services.",
+    "category": "news",
+    "timestamp": "2024-12-22",
+    "geography": "India",
+    "source": "Business Standard",
+    "title": "PhonePe 500M Users Milestone"
+  },
+  {
+    "text": "AI startup funding surges globally with $25 billion invested in Q4 2024. OpenAI competitors raise significant rounds including Anthropic ($2B), Mistral ($1B), and Cohere ($500M). Enterprise AI applications lead investment themes with focus on productivity, customer service, and code generation. India sees growing interest in AI with 50+ deals totaling $500 million.",
+    "category": "news",
+    "timestamp": "2024-12-23",
+    "geography": "Global",
+    "source": "CB Insights",
+    "title": "AI Startup Funding Q4 2024"
+  },
+  {
+    "text": "Healthtech startup Practo expands into mental health and chronic disease management. The company launches AI-powered symptom checker and partners with 30 hospitals for digital health records integration. Practo now serves 30 million users monthly and is targeting profitability by end of 2025.",
+    "category": "news",
+    "timestamp": "2024-12-12",
+    "geography": "India",
+    "source": "YourStory",
+    "title": "Practo Mental Health Expansion"
+  },
+  {
+    "text": "EdTech consolidation continues as Unacademy acquires smaller competitor for $50M. The company is focusing on test prep and upskilling segments after pivoting from K-12. Industry experts predict more M&A activity as funding remains challenging and companies seek profitability through consolidation.",
+    "category": "news",
+    "timestamp": "2024-12-08",
+    "geography": "India",
+    "source": "Entrackr",
+    "title": "Unacademy EdTech Acquisition"
+  },
+  {
+    "text": "Startup India completes 8 years, government announces expanded support measures. Over 1.15 lakh startups have been recognized with 68,000+ jobs created directly. New measures include increased Seed Fund allocation to Rs. 2,000 crores, simplified compliance for startups, and international market access programs.",
+    "category": "news",
+    "timestamp": "2024-12-16",
+    "geography": "India",
+    "source": "StartupIndia",
+    "title": "Startup India 8 Year Anniversary"
+  },
+  {
+    "text": "Quick commerce companies achieve profitability milestone. Zepto and Blinkit report positive unit economics in top 10 cities. Industry grew 60% YoY to $5 billion GMV. Competition intensifies with Amazon and Flipkart expanding quick delivery. Dark store network reaches 3,000+ across India.",
+    "category": "news",
+    "timestamp": "2024-12-19",
+    "geography": "India",
+    "source": "Economic Times",
+    "title": "Quick Commerce Profitability"
+  }
+]

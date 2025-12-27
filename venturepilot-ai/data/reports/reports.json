@@ -1,0 +1,50 @@
+[
+  {
+    "text": "Indian Fintech Market Report 2024: The Indian fintech market is projected to reach $150 billion by 2025, growing at a CAGR of 22%. Digital payments lead the market with 80% share, followed by digital lending (12%), insurtech (5%), and wealthtech (3%). UPI processed over 12 billion transactions monthly in 2024. Key growth drivers include smartphone penetration, financial inclusion initiatives, and favorable regulations.",
+    "category": "report",
+    "timestamp": "2024-12-01",
+    "geography": "India",
+    "source": "NASSCOM",
+    "title": "Indian Fintech Market 2024"
+  },
+  {
+    "text": "SaaS Industry Report: Indian SaaS companies are expected to generate $30 billion in revenue by 2025, up from $12 billion in 2022. The country has 1,000+ SaaS companies with 16 unicorns. Key segments include horizontal SaaS (CRM, HR, collaboration) and vertical SaaS (healthcare, logistics, fintech). International revenue constitutes 60% of total, with US being the largest market.",
+    "category": "report",
+    "timestamp": "2024-11-20",
+    "geography": "India",
+    "source": "Bain & Company",
+    "title": "India SaaS Report 2024"
+  },
+  {
+    "text": "AI Market Analysis: Global AI market to reach $407 billion by 2027. Enterprise adoption accelerating with 35% of companies using AI in operations. Generative AI leads growth with $100B+ investment in 2024. Key use cases include customer service (40%), content generation (25%), and code development (20%). Top challenges remain data quality and talent shortage.",
+    "category": "report",
+    "timestamp": "2024-12-05",
+    "geography": "Global",
+    "source": "McKinsey",
+    "title": "Global AI Market Analysis"
+  },
+  {
+    "text": "Healthcare Technology Market: Indian healthtech market valued at $5 billion in 2024, expected to grow to $21 billion by 2028. Telemedicine leads with 45% market share followed by e-pharmacy (25%) and health analytics (15%). Post-pandemic digital health adoption remains high with 100M+ monthly active users across platforms.",
+    "category": "report",
+    "timestamp": "2024-11-10",
+    "geography": "India",
+    "source": "RedSeer",
+    "title": "India Healthtech Market 2024"
+  },
+  {
+    "text": "E-commerce Market Size: India e-commerce to reach $200 billion by 2027 from $75 billion in 2024. Quick commerce is the fastest-growing segment at 60% CAGR. D2C brands contribute 25% of online retail. Key trends include social commerce growth, tier 2-3 city penetration, and sustainability focus. Logistics costs remain a challenge at 14% of order value.",
+    "category": "report",
+    "timestamp": "2024-12-15",
+    "geography": "India",
+    "source": "Redseer",
+    "title": "India E-commerce Market"
+  },
+  {
+    "text": "EdTech Industry Analysis: Global edtech market to reach $400 billion by 2028. India ranks second globally with 4,500+ edtech startups. K-12 segment valued at $3 billion, test prep at $2.5 billion, and upskilling at $2 billion. Completion rates remain a challenge at 15% average. AI-powered personalization showing promise in improving outcomes.",
+    "category": "report",
+    "timestamp": "2024-11-25",
+    "geography": "India",
+    "source": "Inc42",
+    "title": "EdTech Industry 2024"
+  }
+]
