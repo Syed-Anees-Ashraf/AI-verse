@@ -89,6 +89,15 @@ async def root():
     """Root endpoint."""
     return {"message": "Welcome to VenturePilot AI", "status": "running"}
 
+@app.get("/api/news")
+async def get_news():
+    """Get all news items for the news ticker."""
+    try:
+        news_docs = load_data_files(NEWS_DIR, "news")
+        return news_docs
+    except Exception as e:
+        return []
+
 # Include routers
 app.include_router(onboarding_router, prefix="/api", tags=["Onboarding"])
 app.include_router(dashboard_router, prefix="/api", tags=["Dashboard"])

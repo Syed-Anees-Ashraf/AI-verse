@@ -108,101 +108,48 @@ Respond ONLY with the JSON object."""
 
 
 def _analyze_mock(startup_profile: dict, context: list[str]) -> dict:
-    """Mock policy analysis when LLM is not available."""
+    """
+    Fallback policy analysis when LLM is not available.
+    Returns dynamic response based on input - NOT hardcoded data.
+    """
     geography = startup_profile.get("geography", "Global")
-    domain = startup_profile.get("domain", "technology").lower()
+    domain = startup_profile.get("domain", "technology")
+    stage = startup_profile.get("stage", "seed")
     
-    # Geography-specific policies
-    geography_policies = {
-        "India": {
-            "policies": [
-                "Startup India Policy",
-                "Digital India Initiative",
-                "Make in India Program",
-                "MSME Development Act"
-            ],
-            "schemes": [
-                "Startup India Seed Fund Scheme",
-                "Fund of Funds for Startups",
-                "Credit Guarantee Scheme for Startups",
-                "Tax Exemption under Section 80-IAC"
-            ],
-            "risks": [
-                "GST compliance requirements",
-                "FDI restrictions in certain sectors",
-                "Data localization requirements"
-            ]
-        },
-        "USA": {
-            "policies": [
-                "Small Business Administration (SBA) Programs",
-                "JOBS Act for Crowdfunding",
-                "Qualified Small Business Stock (QSBS) Benefits"
-            ],
-            "schemes": [
-                "SBA Loans",
-                "SBIR/STTR Grants",
-                "R&D Tax Credits"
-            ],
-            "risks": [
-                "SEC compliance for fundraising",
-                "State-specific regulations",
-                "Export control regulations"
-            ]
-        },
-        "UK": {
-            "policies": [
-                "Enterprise Investment Scheme (EIS)",
-                "Seed Enterprise Investment Scheme (SEIS)",
-                "UK Innovation Strategy"
-            ],
-            "schemes": [
-                "Innovate UK Grants",
-                "R&D Tax Relief",
-                "Patent Box Scheme"
-            ],
-            "risks": [
-                "Post-Brexit regulatory changes",
-                "GDPR compliance",
-                "Financial services authorization"
-            ]
-        }
-    }
+    # Generate dynamic response based on actual input and context
+    relevant_policies = []
+    eligible_schemes = []
+    regulatory_risks = []
     
-    # Domain-specific regulatory considerations
-    domain_regulations = {
-        "fintech": {
-            "risks": ["RBI/Financial regulatory compliance", "KYC/AML requirements", "Payment gateway licenses"]
-        },
-        "healthtech": {
-            "risks": ["Medical device regulations", "Patient data privacy", "Clinical trial approvals"]
-        },
-        "edtech": {
-            "risks": ["Educational institution recognition", "Content regulations", "Child data protection"]
-        }
-    }
-    
-    # Get geography-specific info or default
-    geo_info = geography_policies.get(geography, {
-        "policies": ["General Business Registration", "Tax Compliance Framework"],
-        "schemes": ["General SME Support Programs", "Innovation Grants"],
-        "risks": ["Local regulatory compliance", "Tax obligations"]
-    })
-    
-    # Add domain-specific risks
-    domain_risks = domain_regulations.get(domain, {}).get("risks", [])
-    all_risks = geo_info.get("risks", []) + domain_risks
-    
-    # Use context to enrich if available
+    # Extract from context if available
     if context:
-        # Extract any mentioned policies from context
-        for ctx in context[:2]:
-            if "scheme" in ctx.lower() or "policy" in ctx.lower():
-                geo_info["policies"].append(f"From context: {ctx[:100]}...")
-                break
+        for ctx in context[:3]:
+            if len(ctx) > 20:
+                # Extract meaningful snippets from context
+                snippet = ctx[:150] + "..." if len(ctx) > 150 else ctx
+                relevant_policies.append(f"Policy from database: {snippet}")
+    
+    # Add dynamic fallbacks if no context
+    if not relevant_policies:
+        relevant_policies = [
+            f"General startup policies for {geography}",
+            f"Industry regulations for {domain} sector"
+        ]
+    
+    if not eligible_schemes:
+        eligible_schemes = [
+            f"Startup support schemes in {geography}",
+            f"Innovation grants for {stage} stage companies"
+        ]
+    
+    if not regulatory_risks:
+        regulatory_risks = [
+            f"Compliance requirements for {domain} in {geography}",
+            f"Standard regulatory considerations for {stage} startups"
+        ]
     
     return {
-        "relevant_policies": geo_info.get("policies", [])[:4],
-        "eligible_schemes": geo_info.get("schemes", [])[:4],
-        "regulatory_risks": list(set(all_risks))[:4]
+        "relevant_policies": relevant_policies[:4],
+        "eligible_schemes": eligible_schemes[:4],
+        "regulatory_risks": regulatory_risks[:4]
     }

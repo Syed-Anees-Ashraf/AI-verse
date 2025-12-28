@@ -126,59 +126,24 @@ Respond ONLY with the JSON object, no markdown, no explanation."""
 
 
 def _analyze_mock(input_data: dict) -> dict:
-    """Mock analysis when LLM is not available."""
+    """
+    Fallback analysis when LLM is not available.
+    Returns minimal dynamic response based on input - NOT hardcoded data.
+    """
+    description = input_data.get("description", "")
     domain = input_data.get("domain", "technology")
     geography = input_data.get("geography", "Global")
     customer_type = input_data.get("customer_type", "B2B")
+    stage = input_data.get("stage", "seed")
     
-    # Domain-specific competitors and risks
-    domain_data = {
-        "fintech": {
-            "competitors": ["Stripe", "Razorpay", "PayPal", "Square"],
-            "risks": ["Regulatory compliance", "Security vulnerabilities", "Trust building"],
-            "market_category": "Financial Technology"
-        },
-        "healthtech": {
-            "competitors": ["Practo", "1mg", "PharmEasy", "Teladoc"],
-            "risks": ["Healthcare regulations", "Data privacy (HIPAA)", "Clinical validation"],
-            "market_category": "Healthcare Technology"
-        },
-        "edtech": {
-            "competitors": ["Byju's", "Coursera", "Udemy", "Khan Academy"],
-            "risks": ["Content quality", "User engagement", "Certification value"],
-            "market_category": "Education Technology"
-        },
-        "saas": {
-            "competitors": ["Salesforce", "HubSpot", "Zoho", "Freshworks"],
-            "risks": ["Customer acquisition cost", "Churn rate", "Feature commoditization"],
-            "market_category": "Software as a Service"
-        },
-        "ai": {
-            "competitors": ["OpenAI", "Google AI", "Microsoft Azure AI", "Anthropic"],
-            "risks": ["Model accuracy", "Compute costs", "Ethical concerns", "Regulation"],
-            "market_category": "Artificial Intelligence"
-        },
-        "ecommerce": {
-            "competitors": ["Amazon", "Flipkart", "Shopify", "Meesho"],
-            "risks": ["Logistics costs", "Competition", "Margin pressure"],
-            "market_category": "E-Commerce"
-        }
-    }
-    
-    domain_lower = domain.lower()
-    domain_info = domain_data.get(domain_lower, {
-        "competitors": ["Industry Leader A", "Industry Leader B", "Emerging Player C"],
-        "risks": ["Market competition", "Funding challenges", "Team scaling"],
-        "market_category": domain.title()
-    })
-    
+    # Generate dynamic response based on actual input
     return {
-        "problem": f"Addressing key challenges in the {domain} space for {customer_type} customers in {geography}",
-        "value_proposition": f"Innovative {domain} solution that delivers superior value through technology-driven approach",
-        "market_category": domain_info["market_category"],
-        "target_customers": f"{customer_type} customers in {geography} seeking {domain} solutions",
-        "assumed_competitors": domain_info["competitors"],
-        "risk_factors": domain_info["risks"]
+        "problem": f"Problem extracted from: {description[:100]}..." if len(description) > 100 else f"Problem: {description}",
+        "value_proposition": f"Value proposition for {domain} startup targeting {customer_type} customers in {geography}",
+        "market_category": f"{domain.title()} Technology",
+        "target_customers": f"{customer_type} customers in {geography} market",
+        "assumed_competitors": [f"Competitor in {domain} space"],
+        "risk_factors": [f"Market entry risk in {geography}", f"Competition in {domain} sector", f"Typical {stage} stage challenges"]
     }
 
 

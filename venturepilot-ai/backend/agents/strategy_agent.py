@@ -144,16 +144,21 @@ def _synthesize_mock(
     market_analysis: dict,
     news_analysis: dict
 ) -> dict:
-    """Mock strategy synthesis when LLM is not available."""
+    """
+    Fallback strategy synthesis when LLM is not available.
+    Returns dynamic response based on all input analyses - NOT hardcoded data.
+    """
+    domain = startup_profile.get("domain", "technology")
+    stage = startup_profile.get("stage", "seed")
+    geography = startup_profile.get("geography", "Global")
     
     # Determine fundraising readiness based on signals
     readiness_score = 0
     
     # Check stage
-    stage = startup_profile.get("stage", "").lower()
-    if stage in ["series a", "series b", "growth"]:
+    if stage.lower() in ["series a", "series b", "growth"]:
         readiness_score += 2
-    elif stage in ["seed", "pre-seed"]:
+    elif stage.lower() in ["seed", "pre-seed"]:
         readiness_score += 1
     
     # Check investor matches
@@ -183,64 +188,64 @@ def _synthesize_mock(
     else:
         fundraising_readiness = "low"
     
-    # Build recommendations based on analyses
+    # Build DYNAMIC recommendations based on actual analyses
     recommendations = []
     
-    # Policy-based recommendations
+    # Policy-based recommendations - use actual data
     if policy_analysis.get("eligible_schemes"):
-        recommendations.append(
-            f"Apply for government schemes: {', '.join(policy_analysis['eligible_schemes'][:2])}"
-        )
+        schemes = policy_analysis["eligible_schemes"][:2]
+        recommendations.append(f"Explore government schemes: {', '.join(schemes)}")
     
     if policy_analysis.get("regulatory_risks"):
-        recommendations.append(
-            f"Address regulatory compliance: {policy_analysis['regulatory_risks'][0]}"
-        )
+        risk = policy_analysis["regulatory_risks"][0]
+        recommendations.append(f"Address regulatory requirement: {risk}")
     
-    # Investor-based recommendations
+    # Investor-based recommendations - use actual data
     if investor_matches:
         top_investor = investor_matches[0]
         recommendations.append(
-            f"Prioritize outreach to {top_investor['name']} (match score: {top_investor['match_score']})"
+            f"Target outreach: {top_investor['name']} (match score: {top_investor.get('match_score', 'N/A')})"
         )
     
-    # Market-based recommendations
+    # Market-based recommendations - use actual data
     if market_analysis.get("emerging_trends"):
-        recommendations.append(
-            f"Align product roadmap with trend: {market_analysis['emerging_trends'][0]}"
-        )
+        trend = market_analysis["emerging_trends"][0]
+        recommendations.append(f"Align with market trend: {trend}")
     
-    # News-based recommendations
+    if market_analysis.get("growth_signals"):
+        signal = market_analysis["growth_signals"][0]
+        recommendations.append(f"Leverage growth signal: {signal}")
+    
+    # News-based recommendations - use actual data
     if news_analysis.get("opportunities"):
-        recommendations.append(
-            f"Capitalize on market opportunity: {news_analysis['opportunities'][0]}"
-        )
+        opp = news_analysis["opportunities"][0]
+        recommendations.append(f"Capitalize on opportunity: {opp}")
     
-    # Build next actions
+    # Build DYNAMIC next actions based on readiness
     next_actions = []
     
     if fundraising_readiness == "high":
         next_actions = [
-            "Prepare pitch deck with updated market data",
-            "Schedule meetings with top-matched investors",
-            "Update financial projections",
+            f"Prepare pitch deck highlighting {domain} market opportunity",
+            f"Schedule meetings with matched investors",
+            "Update financial projections with latest metrics",
             "Prepare data room for due diligence",
-            "Engage legal counsel for term sheet review"
+            f"Engage with {geography} investor network"
         ]
     elif fundraising_readiness == "medium":
         next_actions = [
-            "Strengthen key metrics (ARR, growth rate, retention)",
+            f"Strengthen key metrics for {stage} stage requirements",
             "Build relationships with target investors",
-            "Complete regulatory compliance requirements",
+            f"Complete {domain} regulatory compliance",
             "Develop case studies and customer testimonials",
-            "Refine pitch deck with competitive differentiation"
+            "Refine value proposition based on market feedback"
         ]
     else:
         next_actions = [
             "Focus on product-market fit validation",
-            "Build initial traction metrics",
+            f"Build initial traction in {geography} market",
             "Apply for grants and government schemes",
-            "Network with angel investors and accelerators",
+            f"Network with {domain} angel investors",
             "Develop MVP and gather customer feedback"
         ]
     

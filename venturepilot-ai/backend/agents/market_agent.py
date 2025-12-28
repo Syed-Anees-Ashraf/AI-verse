@@ -103,161 +103,54 @@ Respond ONLY with the JSON object."""
 
 
 def _analyze_mock(startup_profile: dict, context: list[str]) -> dict:
-    """Mock market analysis when LLM is not available."""
-    domain = startup_profile.get("domain", "technology").lower()
+    """
+    Fallback market analysis when LLM is not available.
+    Returns dynamic response based on input and context - NOT hardcoded data.
+    """
+    domain = startup_profile.get("domain", "technology")
     geography = startup_profile.get("geography", "Global")
+    stage = startup_profile.get("stage", "seed")
     
-    # Domain-specific market data
-    market_data = {
-        "fintech": {
-            "market_size": "$310 billion globally by 2026, growing at 25% CAGR",
-            "growth_signals": [
-                "Increasing digital payment adoption post-pandemic",
-                "Government push for financial inclusion",
-                "Rise of embedded finance",
-                "Growing smartphone penetration"
-            ],
-            "saturation_risks": [
-                "Intense competition from established players",
-                "Regulatory tightening on digital lending",
-                "Customer acquisition costs rising"
-            ],
-            "trends": [
-                "Buy Now Pay Later (BNPL) expansion",
-                "AI-powered credit scoring",
-                "Blockchain in cross-border payments",
-                "Open banking APIs"
-            ]
-        },
-        "healthtech": {
-            "market_size": "$660 billion globally by 2027, growing at 18% CAGR",
-            "growth_signals": [
-                "Telehealth adoption acceleration",
-                "AI in diagnostics gaining traction",
-                "Wearable health devices boom",
-                "Mental health awareness increasing"
-            ],
-            "saturation_risks": [
-                "Hospital integration challenges",
-                "Patient data privacy concerns",
-                "Insurance reimbursement complexities"
-            ],
-            "trends": [
-                "Remote patient monitoring",
-                "AI-assisted diagnostics",
-                "Personalized medicine",
-                "Digital therapeutics"
-            ]
-        },
-        "saas": {
-            "market_size": "$720 billion globally by 2028, growing at 18% CAGR",
-            "growth_signals": [
-                "Enterprise digital transformation",
-                "Remote work tool adoption",
-                "Vertical SaaS gaining momentum",
-                "AI integration in workflows"
-            ],
-            "saturation_risks": [
-                "Feature commoditization",
-                "High customer acquisition costs",
-                "Churn from economic downturn"
-            ],
-            "trends": [
-                "AI-first product design",
-                "Product-led growth strategies",
-                "Vertical-specific solutions",
-                "Usage-based pricing models"
-            ]
-        },
-        "ai": {
-            "market_size": "$1.8 trillion globally by 2030, growing at 37% CAGR",
-            "growth_signals": [
-                "Generative AI breakthrough adoption",
-                "Enterprise AI implementation surge",
-                "AI infrastructure investments",
-                "AI talent availability improving"
-            ],
-            "saturation_risks": [
-                "Compute cost pressures",
-                "Regulatory uncertainty",
-                "Model differentiation challenges"
-            ],
-            "trends": [
-                "Large Language Models (LLMs)",
-                "AI agents and automation",
-                "Edge AI deployment",
-                "Responsible AI frameworks"
-            ]
-        },
-        "edtech": {
-            "market_size": "$400 billion globally by 2028, growing at 16% CAGR",
-            "growth_signals": [
-                "Online learning normalization",
-                "Corporate upskilling demand",
-                "K-12 digital adoption",
-                "AI tutoring effectiveness"
-            ],
-            "saturation_risks": [
-                "Completion rate challenges",
-                "Content quality differentiation",
-                "Free content competition"
-            ],
-            "trends": [
-                "AI personalized learning paths",
-                "Micro-credentials and badges",
-                "VR/AR immersive learning",
-                "Cohort-based courses"
-            ]
-        },
-        "ecommerce": {
-            "market_size": "$7.5 trillion globally by 2027, growing at 10% CAGR",
-            "growth_signals": [
-                "D2C brand proliferation",
-                "Social commerce growth",
-                "Quick commerce expansion",
-                "Cross-border e-commerce"
-            ],
-            "saturation_risks": [
-                "Delivery cost pressures",
-                "Return rate management",
-                "Customer loyalty challenges"
-            ],
-            "trends": [
-                "Live commerce",
-                "Voice commerce",
-                "Sustainable/ethical shopping",
-                "AI-powered personalization"
-            ]
-        }
-    }
+    growth_signals = []
+    saturation_risks = []
+    emerging_trends = []
+    market_size = f"Market size for {domain} in {geography} - requires LLM analysis"
     
-    # Get domain-specific data or default
-    domain_info = market_data.get(domain, {
-        "market_size": f"${50 + hash(domain) % 200} billion by 2028, growing at {15 + hash(domain) % 15}% CAGR",
-        "growth_signals": [
-            "Digital transformation adoption",
-            "Increasing technology investments",
-            "Favorable regulatory environment"
-        ],
-        "saturation_risks": [
-            "Competition from incumbents",
-            "Economic uncertainty impact"
-        ],
-        "trends": [
-            "AI integration",
-            "Mobile-first solutions",
-            "Data-driven decision making"
+    # Extract from context if available
+    if context:
+        for ctx in context[:3]:
+            if len(ctx) > 20:
+                snippet = ctx[:100] + "..." if len(ctx) > 100 else ctx
+                growth_signals.append(f"Signal from market data: {snippet}")
+        
+        if len(context) > 3:
+            for ctx in context[3:5]:
+                if len(ctx) > 20:
+                    snippet = ctx[:100] + "..." if len(ctx) > 100 else ctx
+                    emerging_trends.append(f"Trend: {snippet}")
+    
+    # Dynamic fallbacks if no context
+    if not growth_signals:
+        growth_signals = [
+            f"Growing adoption of {domain} solutions in {geography}",
+            f"Increasing investment in {domain} sector"
         ]
-    })
     
-    # Adjust for geography
-    if geography == "India":
-        domain_info["growth_signals"].append("India's digital economy growth")
-        domain_info["market_size"] = domain_info["market_size"].replace("globally", "in India")
+    if not saturation_risks:
+        saturation_risks = [
+            f"Competition in {domain} market",
+            f"Market maturity considerations for {stage} stage"
+        ]
+    
+    if not emerging_trends:
+        emerging_trends = [
+            f"Digital transformation in {domain}",
+            f"Technology adoption trends in {geography}"
+        ]
     
     return {
-        "market_size_estimate": domain_info["market_size"],
-        "growth_signals": domain_info["growth_signals"][:4],
-        "saturation_risks": domain_info["saturation_risks"][:3],
-        "emerging_trends": domain_info["trends"][:4]
+        "market_size_estimate": market_size,
+        "growth_signals": growth_signals[:4],
+        "saturation_risks": saturation_risks[:3],
+        "emerging_trends": emerging_trends[:4]
     }

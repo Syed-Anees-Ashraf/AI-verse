@@ -114,224 +114,54 @@ Respond ONLY with the JSON array."""
 
 
 def _match_mock(startup_profile: dict, context: list[str]) -> list[dict]:
-    """Mock investor matching when LLM is not available."""
-    domain = startup_profile.get("domain", "technology").lower()
-    stage = startup_profile.get("stage", "seed").lower()
+    """
+    Fallback investor matching when LLM is not available.
+    Returns dynamic response based on input and context - NOT hardcoded data.
+    """
+    domain = startup_profile.get("domain", "technology")
+    stage = startup_profile.get("stage", "seed")
     geography = startup_profile.get("geography", "Global")
     
-    # Domain-specific investors
-    investors_db = {
-        "fintech": [
+    matched_investors = []
+    
+    # Try to extract investor info from context (RAG results)
+    if context:
+        for i, ctx in enumerate(context[:5]):
+            if len(ctx) > 20:
+                # Parse investor information from context
+                investor_name = f"Investor from database #{i+1}"
+                
+                # Try to extract name from context
+                lines = ctx.split('\n')
+                for line in lines:
+                    if 'name' in line.lower() or ':' in line:
+                        parts = line.split(':')
+                        if len(parts) > 1:
+                            potential_name = parts[1].strip()[:50]
+                            if potential_name:
+                                investor_name = potential_name
+                                break
+                
+                matched_investors.append({
+                    "name": investor_name,
+                    "match_score": max(60, 90 - i * 5),
+                    "reason": f"Matched based on {domain} focus and {stage} stage preference. Context: {ctx[:100]}...",
+                    "past_investments": [f"Portfolio company in {domain}"]
+                })
+    
+    # If no context, return minimal dynamic response
+    if not matched_investors:
+        matched_investors = [
             {
-                "name": "Sequoia Capital India",
-                "base_score": 90,
-                "past_investments": ["Razorpay", "BharatPe", "Pine Labs", "Groww"],
-                "focus": "fintech"
-            },
-            {
-                "name": "Tiger Global",
-                "base_score": 85,
-                "past_investments": ["Slice", "Jupiter", "Fi Money"],
-                "focus": "fintech"
-            },
-            {
-                "name": "Ribbit Capital",
-                "base_score": 88,
-                "past_investments": ["Robinhood", "Revolut", "Credit Karma"],
-                "focus": "fintech"
-            },
-            {
-                "name": "Accel Partners",
-                "base_score": 82,
-                "past_investments": ["Flipkart", "Swiggy", "Freshworks"],
-                "focus": "general"
-            },
-            {
-                "name": "Blume Ventures",
-                "base_score": 75,
-                "past_investments": ["Slice", "Unacademy", "Dunzo"],
-                "focus": "early-stage"
-            }
-        ],
-        "healthtech": [
-            {
-                "name": "Lightspeed Venture Partners",
-                "base_score": 88,
-                "past_investments": ["Innovaccer", "Curefit", "PharmEasy"],
-                "focus": "healthtech"
-            },
-            {
-                "name": "General Atlantic",
-                "base_score": 85,
-                "past_investments": ["Byju's", "NoBroker", "Unacademy"],
-                "focus": "growth"
-            },
-            {
-                "name": "Chiratae Ventures",
-                "base_score": 80,
-                "past_investments": ["Lenskart", "Myntra", "FirstCry"],
-                "focus": "consumer"
-            },
-            {
-                "name": "Matrix Partners India",
-                "base_score": 78,
-                "past_investments": ["Practo", "Ola", "Razorpay"],
-                "focus": "healthtech"
-            }
-        ],
-        "saas": [
-            {
-                "name": "Bessemer Venture Partners",
-                "base_score": 92,
-                "past_investments": ["Chargebee", "Postman", "Procore"],
-                "focus": "saas"
-            },
-            {
-                "name": "Accel Partners",
-                "base_score": 88,
-                "past_investments": ["Freshworks", "BrowserStack", "Zenoti"],
-                "focus": "saas"
-            },
-            {
-                "name": "Tiger Global",
-                "base_score": 85,
-                "past_investments": ["Postman", "HighRadius", "Icertis"],
-                "focus": "saas"
-            },
-            {
-                "name": "Insight Partners",
-                "base_score": 82,
-                "past_investments": ["Postman", "JFrog", "Veeam"],
-                "focus": "saas"
-            }
-        ],
-        "ai": [
-            {
-                "name": "Andreessen Horowitz (a16z)",
-                "base_score": 95,
-                "past_investments": ["OpenAI", "Databricks", "Anyscale"],
-                "focus": "ai"
-            },
-            {
-                "name": "Khosla Ventures",
-                "base_score": 90,
-                "past_investments": ["OpenAI", "Impossible Foods", "Affirm"],
-                "focus": "deep-tech"
-            },
-            {
-                "name": "Sequoia Capital",
-                "base_score": 88,
-                "past_investments": ["Scale AI", "Hugging Face", "Glean"],
-                "focus": "ai"
-            },
-            {
-                "name": "Greylock Partners",
-                "base_score": 85,
-                "past_investments": ["Abnormal Security", "Coda", "Neeva"],
-                "focus": "enterprise-ai"
-            }
-        ],
-        "edtech": [
-            {
-                "name": "GSV Ventures",
-                "base_score": 92,
-                "past_investments": ["Coursera", "ClassDojo", "Degreed"],
-                "focus": "edtech"
-            },
-            {
-                "name": "Owl Ventures",
-                "base_score": 88,
-                "past_investments": ["Byju's", "Masterclass", "Newsela"],
-                "focus": "edtech"
-            },
-            {
-                "name": "Tiger Global",
-                "base_score": 85,
-                "past_investments": ["Byju's", "Unacademy", "Vedantu"],
-                "focus": "edtech"
-            },
-            {
-                "name": "Sequoia Capital India",
-                "base_score": 82,
-                "past_investments": ["Unacademy", "Eruditus", "Scaler"],
-                "focus": "edtech"
-            }
-        ],
-        "ecommerce": [
-            {
-                "name": "SoftBank Vision Fund",
-                "base_score": 88,
-                "past_investments": ["Flipkart", "Meesho", "FirstCry"],
-                "focus": "ecommerce"
-            },
-            {
-                "name": "Prosus Ventures",
-                "base_score": 85,
-                "past_investments": ["Swiggy", "Meesho", "ElasticRun"],
-                "focus": "consumer"
-            },
-            {
-                "name": "Peak XV Partners",
-                "base_score": 82,
-                "past_investments": ["Flipkart", "Myntra", "Urban Company"],
-                "focus": "consumer"
+                "name": f"Investor matching {domain} in {geography}",
+                "match_score": 70,
+                "reason": f"Potential match for {stage} stage {domain} startup in {geography}. Requires LLM for detailed analysis.",
+                "past_investments": [f"Companies in {domain} space"]
             }
         ]
-    }
-    
-    # Get investors for domain or use general list
-    domain_investors = investors_db.get(domain, [
-        {
-            "name": "Accel Partners",
-            "base_score": 80,
-            "past_investments": ["Flipkart", "Swiggy", "Freshworks"],
-            "focus": "general"
-        },
-        {
-            "name": "Sequoia Capital",
-            "base_score": 85,
-            "past_investments": ["Stripe", "Airbnb", "DoorDash"],
-            "focus": "general"
-        },
-        {
-            "name": "Tiger Global",
-            "base_score": 78,
-            "past_investments": ["Byju's", "Razorpay", "Ola"],
-            "focus": "growth"
-        },
-        {
-            "name": "Peak XV Partners",
-            "base_score": 75,
-            "past_investments": ["Flipkart", "Ola", "Zomato"],
-            "focus": "india"
-        }
-    ])
-    
-    # Adjust scores based on stage
-    stage_multiplier = {
-        "pre-seed": 0.9,
-        "seed": 1.0,
-        "series a": 1.0,
-        "series b": 0.95,
-        "series c": 0.90,
-        "growth": 0.85
-    }
-    
-    multiplier = stage_multiplier.get(stage, 1.0)
-    
-    # Build investor list with adjusted scores
-    matched_investors = []
-    for inv in domain_investors:
-        score = min(100, int(inv["base_score"] * multiplier + (hash(inv["name"]) % 10 - 5)))
-        
-        matched_investors.append({
-            "name": inv["name"],
-            "match_score": max(50, min(98, score)),
-            "reason": f"Strong track record in {domain} with investments in {', '.join(inv['past_investments'][:2])}. Focus area aligns with {startup_profile.get('market_category', domain)}.",
-            "past_investments": inv["past_investments"]
-        })
     
     # Sort by match_score descending
     matched_investors.sort(key=lambda x: x["match_score"], reverse=True)
     
     return matched_investors
+
